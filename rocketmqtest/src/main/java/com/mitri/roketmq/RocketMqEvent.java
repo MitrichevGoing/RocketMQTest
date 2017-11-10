@@ -16,8 +16,6 @@ import org.springframework.context.ApplicationEvent;
  * @author Potter
  * @version v2
  */
-@Data
-@EqualsAndHashCode(callSuper=false)
 public class RocketMqEvent extends ApplicationEvent {
   private static final long serialVersionUID = -4468405250074063206L;
 
@@ -50,5 +48,49 @@ public class RocketMqEvent extends ApplicationEvent {
     } catch (UnsupportedEncodingException e) {
       return null;
     }
+  }
+
+  public static long getSerialVersionUID() {
+    return serialVersionUID;
+  }
+
+  public DefaultMQPushConsumer getConsumer() {
+    return consumer;
+  }
+
+  public void setConsumer(DefaultMQPushConsumer consumer) {
+    this.consumer = consumer;
+  }
+
+  public MessageExt getMessageExt() {
+    return messageExt;
+  }
+
+  public void setMessageExt(MessageExt messageExt) {
+    this.messageExt = messageExt;
+  }
+
+  public String getTopic() {
+    return topic;
+  }
+
+  public void setTopic(String topic) {
+    this.topic = topic;
+  }
+
+  public String getTag() {
+    return tag;
+  }
+
+  public void setTag(String tag) {
+    this.tag = tag;
+  }
+
+  public byte[] getBody() {
+    return body;
+  }
+
+  public void setBody(byte[] body) {
+    this.body = body;
   }
 }
