@@ -1,0 +1,12 @@
+server:
+  port: 8001
+
+rmq:
+  namesrvAddr: localhost:9876
+  instanceName: reservation
+  defaultProducer: newGroup
+  transactionProducer: transactionProducer
+  defaultConsumer: defaultConsumer
+  orderConsumer: orderConsumer
+  defaultTopic: topic1,topic2,topic3,topic4,topic5,topic6,topic7,topic8
+  orderTopic: order

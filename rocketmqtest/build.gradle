@@ -1,0 +1,36 @@
+group 'com.mitri.rocket'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    maven{
+        url "http://maven.aliyun.com/nexus/content/groups/public/"
+    }
+//    mavenCentral()
+}
+
+dependencies {
+    compile group: 'org.projectlombok', name: 'lombok', version: '1.16.18'
+    compile group: 'org.apache.rocketmq', name: 'rocketmq-common', version: '4.1.0-incubating'
+    compile group: 'org.apache.rocketmq', name: 'rocketmq-client', version: '4.1.0-incubating'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '1.5.8.RELEASE'
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+def createDir = {
+    path ->
+        File dir = new File(path);
+        if(!dir.exists()){
+            dir.mkdirs()
+        }
+}
+
+task makeJavaDir() {
+    def paths = ['src/main/java','src/main/resources','src/test/java','src/test/resources']
+    doFirst {
+        paths.forEach(createDir)
+    }
+}
